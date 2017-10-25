@@ -21,7 +21,7 @@ description: Howler Brand is the creative studio of Howler Monkey Productions.
 logo: "/uploads/logo-hmp.png"
 teaser: 
 locale: en
-url: 
+url: https://brand.howler.tv
 feed:
   path: atom.xml
 sass:
