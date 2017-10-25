@@ -2,15 +2,18 @@
    Page layout
    ========================================================================== */
 
+
 /*
    Masthead
    ========================================================================== */
 
 #masthead {
+position:relative;
+
 	z-index: 5;
-	background: #dc736b;
 	@include transform(translate(0,0));
 	@include transition(500ms cubic-bezier(.645,.045,.355,1.000));
+	    height: 500px;
 	&.slide {
 		@include transform(translate(-1600px,0));
 	}
@@ -19,12 +22,13 @@
 	}
 
 	h2 {
-		@include span-columns(10);
+		@include span-columns(12);
 		font-size: 2.5em;
 		font-weight: 700;
-		margin: 2.5em 0;
+		margin: 1em 0;
 		line-height: 1.3;
-
+		    padding: 1em 0 3em;
+		    color: white;
 		@include media($small) {
 			width: 100%;
 			font-size: 1.5em;
@@ -63,14 +67,63 @@
 }
 
 
+#stripes {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform: skewY(-12deg);
+    transform-origin: 0;
+    background: linear-gradient(150deg,#53f 15%,#05d5ff 70%,#a6ffcb 94%);
+    top: 0;
+}
 
+#stripes span {
+    height: 190px;
+}
 
+#stripes, #stripes span {
+    position: absolute;
+}
+
+#stripes :nth-child(1) {
+    width: 33.33333%;
+    left: -16.66666%;
+    background: #53f;
+}
+
+#stripes :nth-child(2) {
+    width: 33.33333%;
+    top: 0;
+    left: 16.66666%;
+    right: auto;
+    background: #4553ff;
+}
+
+#stripes :nth-child(3) {
+    width: 33.33333%;
+    left: 49.99999%;
+    bottom: auto;
+    background: #4f40ff;
+}
+
+#stripes :nth-child(4) {
+    width: 33.33333%;
+    top: 380px;
+    right: -16.66666%;
+    background: #25ddf5;
+}
+
+#stripes :nth-child(5) {
+    width: 33.33333%;
+    bottom: 0;
+    background: #1fa2ff;
+}
 
 
 
 .site-title {
 	@include row;
-	max-width: 300px;
+	max-width: 85px;
 
 	@include media($large) {
 		@include span-columns(4);
@@ -83,6 +136,7 @@
 	@include font-size(20,no);
 	line-height: .5 * $masthead-height; // half the height to center vertically
 	text-transform: uppercase;
+	float:left;
 }
 
 .site-title-about {
@@ -127,7 +181,7 @@
 				content: '';
 				display: block;
 				position: absolute;
-				top: 0;
+				bottom: 10px;
 				left: 0;
 				height: 2px;
 				@include transition(width 0.3s);
@@ -138,7 +192,7 @@
 			}
 			&:after {
 				width: 0;
-				background: $black;
+				background: white;
 			}
 			&:active:after,
 			&:hover:after {
@@ -151,31 +205,28 @@
 /* Top menu navigation */
 
 .top-menu {
-	display: none;
 	position: relative;
-	@include media($medium) {
-		@include span-columns(12);
-	}
-	@include media($large) {
-		@include span-columns(7);
+	
+		@include span-columns(10);
 		ul {
 			position: absolute;
 			right: 0;
 		}
-	}
-	.home,
-	.sub-menu-item {
-		display: none;
-	}
+	
 	li {
 		a {
 			font-weight: 700;
 			@include font-size(16,no);
 			line-height: .5 * $masthead-height; // half the height to center vertically
-			color: $black;
+			color: white;
 			text-transform: uppercase;
 		}
 	}
+
+	@include media($small) {
+	display:none;
+
+}
 }
 
 /* Bottom menu navigation */
@@ -234,7 +285,8 @@ text-align: center;
 
 	.main-intro {
 		@include outer-container;
-		margin-top: 2em;
+		margin-top: 4em;
+		margin-bottom: 6em;
 
 		p {
 			@include span-columns(10);
@@ -245,9 +297,8 @@ text-align: center;
 		}
 	}
 
-	.main-work, .main-partners, .main-contact, .main-capabilities-about {
+	.main-work, .main-works, .main-partners, .main-contact, .main-capabilities-about {
 				@include outer-container;
-		text-align: center;
 	}
 
 
@@ -256,22 +307,27 @@ text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
-		margin: 2em 0;
+		margin: 7em 0;
 
 			a {
-				background-color: #eee;
+				border: 1px solid ;
 				padding: 10px;
 				text-decoration: none;
-				border-radius: 10px;
+
+				&:hover {
+				background: black;
+				color: white;
+				}
 			}
 
 	}
 
 	.main-services {
-		margin-top: 4em;
-		border-bottom: 1px solid #eee;
+		margin-top: 7em;
 
 	}
+
+
 
 	.main-services--item {
 		display: inline-block;
@@ -280,10 +336,15 @@ text-align: center;
     position: relative;
     vertical-align: top;
 
+
 		@include media($small) {
 			width: 100%;
 			display: block;
 
+		}
+
+		img {
+		max-width:70px;
 		}
 
 	}
@@ -293,7 +354,7 @@ text-align: center;
 	.main-partners--item {
 		display: inline-block;
 margin-right: 2.35765%;
-width: 14.70196%;
+width: 16.70196%;
 vertical-align: middle;
 
 @include media($small) {
@@ -313,12 +374,13 @@ margin: 1em 0;
 
 
 		.main-team--member {
-			@include outer-container;
+				@include span-columns(6);
 			padding-bottom: 2em ;
 			margin-bottom: 2em ;
-			border-bottom: 1px solid #eee;
+			    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.21);
+    border-radius: 10px;
+    padding: 40px;
 			p{
-				@include span-columns(7);
 				margin-top: 0;
 				@include media($small) {
 					width: 100%;
@@ -326,7 +388,6 @@ margin: 1em 0;
 			}
 
 			img {
-				@include span-columns(4);
 				@include media($small) {
 					width: 100%;
 				}
@@ -488,6 +549,30 @@ margin: 1em 0;
 	}
 }
 
+.main-works {
+	margin: 5em 0;
+}
+
+
+.main-works--section {
+	@include span-columns(6);
+			padding-bottom: 2em ;
+			margin-bottom: 2em ;
+			    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.21);
+     border-radius: 10px;
+    padding: 9px 40px 30px;
+        min-height: 266px;
+        @include media($small) {
+	width: 100%;
+
+}
+	h4, p, a {
+	text-decoration: none;
+	}	
+
+
+}
+
 /*
    Page footer
    ========================================================================== */
@@ -525,10 +610,11 @@ margin: 1em 0;
    ========================================================================== */
 
 #site-footer {
-	@include outer-container;
+	background-color:#fbfbfb;
 	margin-top: (3 * (0px + $doc-line-height));
 	margin-top: (3 * (0rem + ($doc-line-height / $doc-font-size)));
 	font-family: $alt-font;
+	padding: 5em 0;
   /* Copyright text */
 	.copyright, .copyright--rights {
 		@include font-size(12);

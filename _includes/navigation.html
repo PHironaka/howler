@@ -1,11 +1,6 @@
 <ul class="menu-item">
-	<li class="home"><a href="/">{{ site.title }}</a></li>
-	{% for link in site.data.navigation %}
-    {% if link.url contains 'http' %}
-        {% assign domain = '' %}
-        {% else %}
-        {% assign domain = site.url %}
-    {% endif %}
-    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
-  {% endfor %}
+	<li class="about"><a href="#about">About Us</a></li>
+	<li  class="capabilities"><a   href="#capabilities">Capabilities</a></li>
+	<li  class="partners"><a  href="#partners">Partners</a></li>
+	<li  class="contact"><a  href="#contact">Contact Us</a></li>
 </ul>
