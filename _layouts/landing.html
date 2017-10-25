@@ -3,7 +3,7 @@ layout: default
 ---
 
 <div id="main" role="main">
-  <div class="main-intro">
+  <div id="about" class="main-intro">
         <h2>About Us</h2>
 
     <p>{{site.intro}}</p>
@@ -11,7 +11,7 @@ layout: default
 
   {% for page in site.pages %}
   {% if page.title == 'About' %}
-  <div class="main-capabilities">
+  <div id="capabilities" class="main-capabilities">
     {{page.content}}
   </div>
 
@@ -51,28 +51,38 @@ layout: default
 
       <p>Music supervision </p>
     </div>
-
+<div id="work" class="main-works">
     <h3>Selected Case Studies</h3>
     {% for work in site.work %}
     <div class="main-works--section">
-      <p> {{work.title}} </p>
+      <h4>{{work.title}}</h4>
+    <p>{{work.date| date_to_string }}</p>
+
+      <a href="{{work.link}}" target="_blank">Link  ↳</a>
+    {% if work.content %}
+     {{work.content}} 
+    {% endif %}
     </div>
     {% endfor %}
-
+</div>
   </div>
 
 
-  <div class="main-team">
+  <!-- <div class="main-team">
+
+
+
     <h2>The Team</h2>
     {% for team in site.team %}
     <div class="main-team--member">
       <img src="{{team.image}}" alt="">
       <h4>{{team.title}}</h4>
       {{team.content}}
+
     </div>
 
     {% endfor %}
-  </div>
+  </div> -->
 
   <!-- <div class="main-work">
     <h4>Types of Work we do</h4>
@@ -82,8 +92,8 @@ layout: default
 
 
 
-  <div class="main-partners">
-    <h4>Our Partners</h4>
+  <div id="partners" class="main-partners">
+    <h3>Our Partners</h3>
     <p>Brands we worked alongside with.</p>
 
 
@@ -98,8 +108,10 @@ layout: default
   </div>
 
 
-    <div class="main-contact">
-      <p>Wanna work with us? Please reach out:</p>
+    <div id="contact" class="main-contact">
+    <h3>Contact</h3>
+
+      <p>Wanna work with us? Please get in touch with us:</p>
       <a href="mailto:info@howler.tv">info@howler.tv</a>
 
     </div>

@@ -22,12 +22,12 @@ position:relative;
 	}
 
 	h2 {
-		@include span-columns(10);
+		@include span-columns(12);
 		font-size: 2.5em;
 		font-weight: 700;
-		margin: 2.5em 0;
+		margin: 1em 0;
 		line-height: 1.3;
-		    padding: 1em 0 2em;
+		    padding: 1em 0 3em;
 		    color: white;
 		@include media($small) {
 			width: 100%;
@@ -192,7 +192,7 @@ position:relative;
 			}
 			&:after {
 				width: 0;
-				background: $black;
+				background: white;
 			}
 			&:active:after,
 			&:hover:after {
@@ -218,10 +218,15 @@ position:relative;
 			font-weight: 700;
 			@include font-size(16,no);
 			line-height: .5 * $masthead-height; // half the height to center vertically
-			color: $black;
+			color: white;
 			text-transform: uppercase;
 		}
 	}
+
+	@include media($small) {
+	display:none;
+
+}
 }
 
 /* Bottom menu navigation */
@@ -280,7 +285,8 @@ text-align: center;
 
 	.main-intro {
 		@include outer-container;
-		margin-top: 2em;
+		margin-top: 4em;
+		margin-bottom: 6em;
 
 		p {
 			@include span-columns(10);
@@ -291,9 +297,8 @@ text-align: center;
 		}
 	}
 
-	.main-work, .main-partners, .main-contact, .main-capabilities-about {
+	.main-work, .main-works, .main-partners, .main-contact, .main-capabilities-about {
 				@include outer-container;
-		text-align: center;
 	}
 
 
@@ -302,22 +307,27 @@ text-align: center;
     display: block;
     margin-left: auto;
     margin-right: auto;
-		margin: 2em 0;
+		margin: 7em 0;
 
 			a {
-				background-color: #eee;
+				border: 1px solid ;
 				padding: 10px;
 				text-decoration: none;
-				border-radius: 10px;
+
+				&:hover {
+				background: black;
+				color: white;
+				}
 			}
 
 	}
 
 	.main-services {
-		margin-top: 4em;
-		border-bottom: 1px solid #eee;
+		margin-top: 7em;
 
 	}
+
+
 
 	.main-services--item {
 		display: inline-block;
@@ -344,7 +354,7 @@ text-align: center;
 	.main-partners--item {
 		display: inline-block;
 margin-right: 2.35765%;
-width: 14.70196%;
+width: 16.70196%;
 vertical-align: middle;
 
 @include media($small) {
@@ -364,12 +374,13 @@ margin: 1em 0;
 
 
 		.main-team--member {
-			@include outer-container;
+				@include span-columns(6);
 			padding-bottom: 2em ;
 			margin-bottom: 2em ;
-			border-bottom: 1px solid #eee;
+			    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.21);
+    border-radius: 10px;
+    padding: 40px;
 			p{
-				@include span-columns(7);
 				margin-top: 0;
 				@include media($small) {
 					width: 100%;
@@ -377,7 +388,6 @@ margin: 1em 0;
 			}
 
 			img {
-				@include span-columns(4);
 				@include media($small) {
 					width: 100%;
 				}
@@ -539,6 +549,30 @@ margin: 1em 0;
 	}
 }
 
+.main-works {
+	margin: 5em 0;
+}
+
+
+.main-works--section {
+	@include span-columns(6);
+			padding-bottom: 2em ;
+			margin-bottom: 2em ;
+			    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.21);
+     border-radius: 10px;
+    padding: 9px 40px 30px;
+        min-height: 266px;
+        @include media($small) {
+	width: 100%;
+
+}
+	h4, p, a {
+	text-decoration: none;
+	}	
+
+
+}
+
 /*
    Page footer
    ========================================================================== */
@@ -576,10 +610,11 @@ margin: 1em 0;
    ========================================================================== */
 
 #site-footer {
-	@include outer-container;
+	background-color:#fbfbfb;
 	margin-top: (3 * (0px + $doc-line-height));
 	margin-top: (3 * (0rem + ($doc-line-height / $doc-font-size)));
 	font-family: $alt-font;
+	padding: 5em 0;
   /* Copyright text */
 	.copyright, .copyright--rights {
 		@include font-size(12);
